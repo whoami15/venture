@@ -13,15 +13,22 @@ declare(strict_types=1);
 
 namespace Sassnowski\Venture\Workflow;
 
+use Sassnowski\Venture\Collection\Identifiable;
+
 /**
  * @psalm-immutable
  */
-final class JobDefinition
+final class JobDefinition implements Identifiable
 {
     public function __construct(
         public string $id,
         public string $name,
         public WorkflowStepInterface $job,
     ) {
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 }
